@@ -15,7 +15,7 @@ const DatalogsService = require('./datalogs-service');
 const DatalogsRouter = express.Router();
 
 
-//GET PRIMARY PATH ---------------------------------------------------------WORKING!!!!!!!
+//GET PRIMARY PATH ---------------------------------------WORKS !!!
 DatalogsRouter
   .route('/')
   .get((req, res, next) => {
@@ -29,7 +29,7 @@ DatalogsRouter
 
 
 
-//GET ALL THE DATA LOGS ----------------------------------------------------WORKING!!!!!!!
+//GET ALL THE DATA LOGS ---------------------------------------WORKS !!!
 DatalogsRouter
   .route('/allthedata')
   .get((req, res, next) => {
@@ -42,50 +42,57 @@ DatalogsRouter
 
   
 
-//GET FEED BABY DATA LOGS -------------------------------RETURNS AN EMPTY ARRAY [] !!!!!!!
-//filter by currently logged-in USER ID
+//GET FEED BABY DATA LOGS ---------------------------------------WORKS !!!
 DatalogsRouter
   .route('/feedbabydata')
   .get((req, res, next) => {
     DatalogsService.getDatalogsByEventCategory(
       req.app.get('db'), 
-      req.params.event
+      'Feed'/////////////////////////////////////////// set the "event" here !!!!
     )
       .then(datalogs => {
         res.json(datalogs);
       })
       .catch(next);
-
   });
 
 
+//GET BATH TIME DATA LOGS ---------------------------------------WORKS !!!
+DatalogsRouter
+  .route('/bathtimedata')
+  .get((req, res, next) => {
+    DatalogsService.getDatalogsByEventCategory(
+      req.app.get('db'), 
+      'Bath'/////////////////////////////////////////// set the "event" here!!!!
+    )
+      .then(datalogs => {
+        res.json(datalogs);
+      })
+      .catch(next);
+  });
+
+
+
+
     
-//GET CHANGE DIAPER DATA LOGS ------------------------------------STILL NEEDS LOGIC !!!!!!!
-//filter by currently logged-in USER ID
-/*
-app.get('/changediaperdata', (req, res) => {
-res.send('This will be the Change Diaper Log endpoint');
-
-// REUSE SAME CODE BASE AS app.get('/feedbabydata')
-});
-*/
-
-
-//GET BATH TIME DATA LOGS ---------------------------------------STILL NEEDS LOGIC !!!!!!!
-//filter by currently logged-in USER ID
-/*
-app.get('/bathtimedata', (req, res) => {
-res.send('This will be the Bath Time Log endpoint');
-
-// REUSE SAME CODE BASE AS app.get('/feedbabydata')
-});
-*/
+//GET CHANGE DIAPER DATA LOGS ------------------------------------STILL NEEDS CORRECT LOGIC !!!!!!!
+DatalogsRouter
+  .route('/changediaperdata')
+  .get((req, res, next) => {
+    DatalogsService.getDatalogsByEventCategory(
+      req.app.get('db'), 
+      'Wet'/////////////////////////////////////////// set the "event" here!!!!
+    )
+      .then(datalogs => {
+        res.json(datalogs);
+      })
+      .catch(next);
+  });
 
 
 //POST LOG TO DATABASE ----------------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<< !!!!!
 //what does the code for POST look like????
 //sends the current triggered EVENT, CURRENT DATE, CURRENT TIME, USER ID to the database
-
 
 
 module.exports = DatalogsRouter;
