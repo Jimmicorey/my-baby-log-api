@@ -1,0 +1,3 @@
+TRUNCATE
+  my_baby_log_events
+  RESTART IDENTITY CASCADE;

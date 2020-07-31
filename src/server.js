@@ -1,14 +1,41 @@
 /* eslint-disable strict */
+require('dotenv').config();
 
-const express = require('express');
-const app = express();
+const knex = require('knex');
+const app = require('./app');
+const { PORT, DB_URL } = require('./config');
 
-const PORT = process.env.PORT || 3000;
-
-app.get('/api/*', (req, res) => {
-  res.json({ok: true});
+const db = knex({
+  client: 'pg',
+  connection: DB_URL,
 });
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.set('db', db);
 
-module.exports = {app};
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+console.log('knex and driver installed correctly');
+
+//this SELECTS SPECIFIC datalog(s) per 'searchTerm' in the database
+//converted to a FUNCTION for REUSABILITY
+function searchByEventCategory(searchTerm) {
+  db.from('my_baby_log_events')
+    .select('id', 'event_category', 'date_created')
+    .from('my_baby_log_events')
+    .where('event_category', 'ILIKE', `%${searchTerm}%`)
+    .then(result => {
+      console.log(result);
+    });
+}
+searchByEventCategory('Wet');
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+app.listen(PORT, () => {
+  console.log(`Server listening at http://localhost:${PORT}`);
+});
