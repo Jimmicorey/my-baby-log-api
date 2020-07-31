@@ -11,17 +11,17 @@ VALUES
   ('Feed'),
   ('Bath 1'),
   ('Bath 2'),
-  ('Wet 1'),
-  ('Poopy 1'),
-  ('Poopy 2'),
-  ('Both 1'),
+  ('Wet Diaper 1'),
+  ('Poopy Diaper 1'),
+  ('Poopy Diaper 2'),
+  ('Both Diaper 1'),
   ('Feed'),
-  ('Wet 2'),
-  ('Both 2'),
-  ('Wet 3'),
-  ('Poopy 3'),
+  ('Wet Diaper 2'),
+  ('Both Diaper 2'),
+  ('Wet Diaper 3'),
+  ('Poopy Diaper 3'),
   ('Bath 3'),
-  ('Both 3');
+  ('Both Diaper 3');
 
 
 COMMIT;

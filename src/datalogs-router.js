@@ -48,7 +48,7 @@ DatalogsRouter
   .get((req, res, next) => {
     DatalogsService.getDatalogsByEventCategory(
       req.app.get('db'), 
-      'Feed'/////////////////////////////////////////// set the "event" here !!!!
+      'Feed'//<------- set the "event" here!!!!
     )
       .then(datalogs => {
         res.json(datalogs);
@@ -63,7 +63,7 @@ DatalogsRouter
   .get((req, res, next) => {
     DatalogsService.getDatalogsByEventCategory(
       req.app.get('db'), 
-      'Bath'/////////////////////////////////////////// set the "event" here!!!!
+      'Bath'//<------- set the "event" here!!!!
     )
       .then(datalogs => {
         res.json(datalogs);
@@ -75,13 +75,13 @@ DatalogsRouter
 
 
     
-//GET CHANGE DIAPER DATA LOGS ------------------------------------STILL NEEDS CORRECT LOGIC !!!!!!!
+//GET CHANGE DIAPER DATA LOGS ---------------------------------------WORKS !!!
 DatalogsRouter
   .route('/changediaperdata')
   .get((req, res, next) => {
     DatalogsService.getDatalogsByEventCategory(
       req.app.get('db'), 
-      'Wet'/////////////////////////////////////////// set the "event" here!!!!
+      'Diaper'//<------- set the "event" here!!!!
     )
       .then(datalogs => {
         res.json(datalogs);
