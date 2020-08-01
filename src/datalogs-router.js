@@ -28,7 +28,6 @@ DatalogsRouter
   });
 
 
-
 //GET ALL THE DATA LOGS ---------------------------------------WORKS !!!
 DatalogsRouter
   .route('/allthedata')
@@ -39,7 +38,6 @@ DatalogsRouter
       })
       .catch(next);
   });
-
   
 
 //GET FEED BABY DATA LOGS ---------------------------------------WORKS !!!
@@ -49,6 +47,21 @@ DatalogsRouter
     DatalogsService.getDatalogsByEventCategory(
       req.app.get('db'), 
       'Feed'//<------- set the "event" here!!!!
+    )
+      .then(datalogs => {
+        res.json(datalogs);
+      })
+      .catch(next);
+  });
+
+
+//GET CHANGE DIAPER DATA LOGS ---------------------------------------WORKS !!!
+DatalogsRouter
+  .route('/changediaperdata')
+  .get((req, res, next) => {
+    DatalogsService.getDatalogsByEventCategory(
+      req.app.get('db'), 
+      'Diaper'//<------- set the "event" here!!!!
     )
       .then(datalogs => {
         res.json(datalogs);
@@ -73,21 +86,6 @@ DatalogsRouter
 
 
 
-
-    
-//GET CHANGE DIAPER DATA LOGS ---------------------------------------WORKS !!!
-DatalogsRouter
-  .route('/changediaperdata')
-  .get((req, res, next) => {
-    DatalogsService.getDatalogsByEventCategory(
-      req.app.get('db'), 
-      'Diaper'//<------- set the "event" here!!!!
-    )
-      .then(datalogs => {
-        res.json(datalogs);
-      })
-      .catch(next);
-  });
 
 
 //POST LOG TO DATABASE ----------------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<< !!!!!
