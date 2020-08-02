@@ -2,6 +2,7 @@
 
 const express = require('express');
 const DatalogsService = require('./datalogs-service');
+const DatalogsRouter = express.Router();
 
 /////////////////////////////////////////////////////////////////////////////
 //////////////           SETTING UP MY ENDPOINTS           //////////////////
@@ -12,19 +13,12 @@ const DatalogsService = require('./datalogs-service');
  * to access data in a single database table
 */
 
-const DatalogsRouter = express.Router();
-
 
 //GET PRIMARY PATH ---------------------------------------WORKS !!!
 DatalogsRouter
   .route('/')
   .get((req, res, next) => {
     res.send('Hello, Mommies & Daddies!');
-    // DatalogsService.getAllDatalogs(req.app.get('db'))
-    //   .then(datalogs => {
-    //     res.json(datalogs);
-    //   })
-    //   .catch(next);
   });
 
 
@@ -32,7 +26,6 @@ DatalogsRouter
 DatalogsRouter
   .route('/allthedata')
   .get((req, res, next) => {
-    // res.send('ALL THE DATA HERE');
     DatalogsService.getAllDatalogs(req.app.get('db'))
       .then(datalogs => {
         res.json(datalogs);
@@ -45,7 +38,6 @@ DatalogsRouter
 DatalogsRouter
   .route('/feedbabydata')
   .get((req, res, next) => {
-    //res.send('FEED BABY DATALOGS HERE');
     DatalogsService.getDatalogsByEventCategory(
       req.app.get('db'), 
       'Feed'//<------- set the "event" here!!!!
@@ -61,7 +53,6 @@ DatalogsRouter
 DatalogsRouter
   .route('/changediaperdata')
   .get((req, res, next) => {
-    //res.send('CHANGE DIAPER DATALOGS HERE');
     DatalogsService.getDatalogsByEventCategory(
       req.app.get('db'), 
       'Diaper'//<------- set the "event" here!!!!
@@ -77,7 +68,6 @@ DatalogsRouter
 DatalogsRouter
   .route('/bathtimedata')
   .get((req, res, next) => {
-    //res.send('BATH TIME DATALOGS HERE');
     DatalogsService.getDatalogsByEventCategory(
       req.app.get('db'), 
       'Bath'//<------- set the "event" here!!!!
