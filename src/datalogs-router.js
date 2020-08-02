@@ -32,12 +32,12 @@ DatalogsRouter
 DatalogsRouter
   .route('/allthedata')
   .get((req, res, next) => {
-    res.send('ALL THE DATA HERE');
-    // DatalogsService.getAllDatalogs(req.app.get('db'))
-    //   .then(datalogs => {
-    //     res.json(datalogs);
-    //   })
-    //   .catch(next);
+    // res.send('ALL THE DATA HERE');
+    DatalogsService.getAllDatalogs(req.app.get('db'))
+      .then(datalogs => {
+        res.json(datalogs);
+      })
+      .catch(next);
   });
   
 
@@ -45,15 +45,15 @@ DatalogsRouter
 DatalogsRouter
   .route('/feedbabydata')
   .get((req, res, next) => {
-    res.send('FEED BABY DATALOGS HERE');
-    // DatalogsService.getDatalogsByEventCategory(
-    //   req.app.get('db'), 
-    //   'Feed'//<------- set the "event" here!!!!
-    // )
-    //   .then(datalogs => {
-    //     res.json(datalogs);
-    //   })
-    //   .catch(next);
+    //res.send('FEED BABY DATALOGS HERE');
+    DatalogsService.getDatalogsByEventCategory(
+      req.app.get('db'), 
+      'Feed'//<------- set the "event" here!!!!
+    )
+      .then(datalogs => {
+        res.json(datalogs);
+      })
+      .catch(next);
   });
 
 
@@ -61,15 +61,15 @@ DatalogsRouter
 DatalogsRouter
   .route('/changediaperdata')
   .get((req, res, next) => {
-    res.send('CHANGE DIAPER DATALOGS HERE');
-    // DatalogsService.getDatalogsByEventCategory(
-    //   req.app.get('db'), 
-    //   'Diaper'//<------- set the "event" here!!!!
-    // )
-    //   .then(datalogs => {
-    //     res.json(datalogs);
-    //   })
-    //   .catch(next);
+    //res.send('CHANGE DIAPER DATALOGS HERE');
+    DatalogsService.getDatalogsByEventCategory(
+      req.app.get('db'), 
+      'Diaper'//<------- set the "event" here!!!!
+    )
+      .then(datalogs => {
+        res.json(datalogs);
+      })
+      .catch(next);
   });
 
 
@@ -77,15 +77,15 @@ DatalogsRouter
 DatalogsRouter
   .route('/bathtimedata')
   .get((req, res, next) => {
-    res.send('BATH TIME DATALOGS HERE');
-    // DatalogsService.getDatalogsByEventCategory(
-    //   req.app.get('db'), 
-    //   'Bath'//<------- set the "event" here!!!!
-    // )
-    //   .then(datalogs => {
-    //     res.json(datalogs);
-    //   })
-    //   .catch(next);
+    //res.send('BATH TIME DATALOGS HERE');
+    DatalogsService.getDatalogsByEventCategory(
+      req.app.get('db'), 
+      'Bath'//<------- set the "event" here!!!!
+    )
+      .then(datalogs => {
+        res.json(datalogs);
+      })
+      .catch(next);
   });
 
 
@@ -98,34 +98,3 @@ DatalogsRouter
 
 
 module.exports = DatalogsRouter;
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/* WORKING CODE NOTES DELETE WHEN THIS PUPPY STARTS WORKING!!!!!! */
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-
-//this SELECTS SPECIFIC datalog(s) per 'searchTerm' in the database
-//converted to a FUNCTION for REUSABILITY
-/*
-function searchByEventCategory(searchTerm) {
-    db.from('my_baby_log_events')
-        .select('id', 'event_category', 'date_created')
-        .from('my_baby_log_events')
-        .where('event_category', 'ILIKE', `%${searchTerm}%`)
-        .then(result => {
-            console.log(result);
-        });
-}
-searchByEventCategory('Wet');
-*/
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
