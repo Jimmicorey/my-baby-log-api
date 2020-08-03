@@ -84,7 +84,7 @@ DatalogsRouter
       })
       .catch(next);
   })
-//POST NEW FEED BABY DATALOG TO DATABASE ------------------- WORKING!!!!!
+//POST NEW CHANGE DIAPER DATALOG TO DATABASE ------------------- WORKING!!!!!
   .post(express.json(), (req, res, next) => {
 
     const {event_category} = req.body;
@@ -116,7 +116,7 @@ DatalogsRouter
       })
       .catch(next);
   })
-//POST NEW FEED BABY DATALOG TO DATABASE ------------------- WORKING!!!!!
+//POST NEW BATH TIME DATALOG TO DATABASE ------------------- WORKING!!!!!
   .post(express.json(), (req, res, next) => {
 
     const {event_category} = req.body;
