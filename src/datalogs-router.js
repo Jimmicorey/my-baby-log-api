@@ -5,37 +5,36 @@ const DatalogsService = require('./datalogs-service');
 const DatalogsRouter = express.Router();
 
 /////////////////////////////////////////////////////////////////////////////
-//////////////           SETTING UP MY ENDPOINTS           //////////////////
+//////////////              MY ENDPOINTS                   //////////////////
 /////////////////////////////////////////////////////////////////////////////
-//GET PRIMARY PATH 
-DatalogsRouter
-  .route('/')
-  .get((req, res, next) => {
-    res.send('Hello, Mommies & Daddies!');
-  });
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+// //GET PRIMARY PATH <<-------DOES NOT GET UTILIZED FOR ANYTHING YET!!!!!
+// DatalogsRouter
+//   .route('/')
+//   .get((req, res, next) => {
+//     res.send('Hello, Mommies & Daddies!');
+//   });
 
 
-//GET ALL THE DATA LOGS 
-DatalogsRouter
-  .route('/allthedata')
-  .get((req, res, next) => {
-    DatalogsService.getAllDatalogs(req.app.get('db'))
-      .then(datalogs => {
-        res.json(datalogs);
-      })
-      .catch(next);
-  });
-///////////////////////////////////////////////////////// 
-/////////////////////////////////////////////////////////
-/**
- * POST LOG TO DATABASE sends the current triggered 
- * EVENT (POST body {"event_category": "new event"}), 
- * CURRENT DATE (database does this), 
- * CURRENT TIME (database does this), 
- * USER ID (login-id... stretch goal!!!) 
- * to the database
-**/
-/////////////////////////////////////////////////////////
+// //GET ALL THE DATA LOGS <<--DOES NOT GET UTILIZED FOR ANYTHING YET!!!!!
+// DatalogsRouter
+//   .route('/allthedata')
+//   .get((req, res, next) => {
+//     DatalogsService.getAllDatalogs(req.app.get('db'))
+//       .then(datalogs => {
+//         res.json(datalogs);
+//       })
+//       .catch(next);
+//   });
+// ///////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////
+////////////////// FEED BABY DATA LOGS ////////////////////////
 
 //GET FEED BABY DATA LOGS 
 DatalogsRouter
@@ -50,7 +49,8 @@ DatalogsRouter
       })
       .catch(next);
   })
-  //POST NEW FEED BABY DATALOG TO DATABASE ------------------- WORKING!!!!!
+
+  //POST NEW FEED BABY DATALOG TO DATABASE
   .post(express.json(), (req, res, next) => {
 
     const {event_category} = req.body;
@@ -68,8 +68,8 @@ DatalogsRouter
       .catch(next);
   });
 
-
-
+////////////////////////////////////////////////////////////////
+////////////////// CHANGE DIAPER DATA LOGS /////////////////////
 
 //GET CHANGE DIAPER DATA LOGS 
 DatalogsRouter
@@ -84,7 +84,8 @@ DatalogsRouter
       })
       .catch(next);
   })
-//POST NEW CHANGE DIAPER DATALOG TO DATABASE ------------------- WORKING!!!!!
+
+//POST NEW CHANGE DIAPER DATALOG TO DATABASE
   .post(express.json(), (req, res, next) => {
 
     const {event_category} = req.body;
@@ -102,6 +103,9 @@ DatalogsRouter
       .catch(next);
   });
 
+
+////////////////////////////////////////////////////////////
+////////////////// BATH TIME DATA LOGS /////////////////////
 
 //GET BATH TIME DATA LOGS 
 DatalogsRouter
@@ -116,7 +120,8 @@ DatalogsRouter
       })
       .catch(next);
   })
-//POST NEW BATH TIME DATALOG TO DATABASE ------------------- WORKING!!!!!
+
+//POST NEW BATH TIME DATALOG TO DATABASE
   .post(express.json(), (req, res, next) => {
 
     const {event_category} = req.body;
@@ -133,10 +138,6 @@ DatalogsRouter
       })
       .catch(next);
   });
-
-
-
-
 
 
 module.exports = DatalogsRouter;

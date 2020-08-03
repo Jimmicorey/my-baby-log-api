@@ -7,21 +7,13 @@ TRUNCATE
 
 INSERT INTO my_baby_log_events (event_category)
 VALUES
-  ('Feed'),
-  ('Feed'),
+  ('Feed 1'),
   ('Bath 1'),
+  ('Diaper 1'),
+  ('Feed 2'),
   ('Bath 2'),
-  ('Wet Diaper 1'),
-  ('Poopy Diaper 1'),
-  ('Poopy Diaper 2'),
-  ('Both Diaper 1'),
-  ('Feed'),
-  ('Wet Diaper 2'),
-  ('Both Diaper 2'),
-  ('Wet Diaper 3'),
-  ('Poopy Diaper 3'),
+  ('Diaper 2'),
+  ('Feed 3'),
   ('Bath 3'),
-  ('Both Diaper 3');
-
-
+  ('Diaper 3');
 COMMIT;
