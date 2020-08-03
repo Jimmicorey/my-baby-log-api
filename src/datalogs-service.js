@@ -16,36 +16,16 @@ const DatalogsService = {
       .where('event_category', 'ILIKE', `%${event}%`);
   },
 
+  //POST NEW DATALOGS TO DATABASE ////////////////////////// NEW FEATURE ENDPOINT!!!!!!!
+  insertNewDatalog(db, newEvent) {
+    return db
+      .insert(newEvent)
+      .into('my_baby_log_events')
+      .returning('*')
+      .then(rows => rows[0]);
+  }
+
 };
 
 
 module.exports = DatalogsService;
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/* WORKING CODE NOTES DELETE WHEN THIS PUPPY STARTS WORKING!!!!!! */
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-
-//this SELECTS SPECIFIC datalog(s) per 'searchTerm' in the database
-//converted to a FUNCTION for REUSABILITY
-/*
-function searchByEventCategory(searchTerm) {
-    db.from('my_baby_log_events')
-        .select('id', 'event_category', 'date_created')
-        .from('my_baby_log_events')
-        .where('event_category', 'ILIKE', `%${searchTerm}%`)
-        .then(result => {
-            console.log(result);
-        });
-}
-searchByEventCategory('Wet');
-*/
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////

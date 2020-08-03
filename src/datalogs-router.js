@@ -7,14 +7,7 @@ const DatalogsRouter = express.Router();
 /////////////////////////////////////////////////////////////////////////////
 //////////////           SETTING UP MY ENDPOINTS           //////////////////
 /////////////////////////////////////////////////////////////////////////////
-
-/** Capstone-TA: "AL" 
- * SUGGESTED 6 ENDPOINTS < 3 GET 3 POST > (2 for each log page) 
- * to access data in a single database table
-*/
-
-
-//GET PRIMARY PATH ---------------------------------------WORKS !!!
+//GET PRIMARY PATH 
 DatalogsRouter
   .route('/')
   .get((req, res, next) => {
@@ -22,7 +15,7 @@ DatalogsRouter
   });
 
 
-//GET ALL THE DATA LOGS ---------------------------------------WORKS !!!
+//GET ALL THE DATA LOGS 
 DatalogsRouter
   .route('/allthedata')
   .get((req, res, next) => {
@@ -32,9 +25,19 @@ DatalogsRouter
       })
       .catch(next);
   });
-  
+///////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////
+/**
+ * POST LOG TO DATABASE sends the current triggered 
+ * EVENT (POST body {"event_category": "new event"}), 
+ * CURRENT DATE (database does this), 
+ * CURRENT TIME (database does this), 
+ * USER ID (login-id... stretch goal!!!) 
+ * to the database
+**/
+/////////////////////////////////////////////////////////
 
-//GET FEED BABY DATA LOGS ---------------------------------------WORKS !!!
+//GET FEED BABY DATA LOGS 
 DatalogsRouter
   .route('/feedbabydata')
   .get((req, res, next) => {
@@ -46,10 +49,29 @@ DatalogsRouter
         res.json(datalogs);
       })
       .catch(next);
+  })
+  //POST NEW FEED BABY DATALOG TO DATABASE ------------------- WORKING!!!!!
+  .post(express.json(), (req, res, next) => {
+
+    const {event_category} = req.body;
+    let newEvent = {event_category};
+
+    console.log(newEvent);
+
+    DatalogsService.insertNewDatalog(
+      req.app.get('db'),
+      newEvent
+    )
+      .then(datalog => {
+        res.json(datalog);
+      })
+      .catch(next);
   });
 
 
-//GET CHANGE DIAPER DATA LOGS ---------------------------------------WORKS !!!
+
+
+//GET CHANGE DIAPER DATA LOGS 
 DatalogsRouter
   .route('/changediaperdata')
   .get((req, res, next) => {
@@ -61,10 +83,27 @@ DatalogsRouter
         res.json(datalogs);
       })
       .catch(next);
+  })
+//POST NEW FEED BABY DATALOG TO DATABASE ------------------- WORKING!!!!!
+  .post(express.json(), (req, res, next) => {
+
+    const {event_category} = req.body;
+    let newEvent = {event_category};
+  
+    console.log(newEvent);
+  
+    DatalogsService.insertNewDatalog(
+      req.app.get('db'),
+      newEvent
+    )
+      .then(datalog => {
+        res.json(datalog);
+      })
+      .catch(next);
   });
 
 
-//GET BATH TIME DATA LOGS ---------------------------------------WORKS !!!
+//GET BATH TIME DATA LOGS 
 DatalogsRouter
   .route('/bathtimedata')
   .get((req, res, next) => {
@@ -76,15 +115,28 @@ DatalogsRouter
         res.json(datalogs);
       })
       .catch(next);
+  })
+//POST NEW FEED BABY DATALOG TO DATABASE ------------------- WORKING!!!!!
+  .post(express.json(), (req, res, next) => {
+
+    const {event_category} = req.body;
+    let newEvent = {event_category};
+  
+    console.log(newEvent);
+  
+    DatalogsService.insertNewDatalog(
+      req.app.get('db'),
+      newEvent
+    )
+      .then(datalog => {
+        res.json(datalog);
+      })
+      .catch(next);
   });
 
 
 
 
-
-//POST LOG TO DATABASE ----------------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<< !!!!!
-//what does the code for POST look like????
-//sends the current triggered EVENT, CURRENT DATE, CURRENT TIME, USER ID to the database
 
 
 module.exports = DatalogsRouter;
