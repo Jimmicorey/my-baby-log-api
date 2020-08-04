@@ -1,7 +1,7 @@
 /* eslint-disable strict */
 
 const DatalogsService = {
-//GETS ALL THE DATALOGS
+  //GETS ALL THE DATALOGS
   getAllDatalogs(db) {
     return db
       .from('my_baby_log_events')
@@ -16,7 +16,7 @@ const DatalogsService = {
       .where('event_category', 'ILIKE', `%${event}%`);
   },
 
-  //POST NEW DATALOGS TO DATABASE ////////////////////////// NEW FEATURE ENDPOINT!!!!!!!
+  //POST NEW DATALOGS TO DATABASE
   insertNewDatalog(db, newEvent) {
     return db
       .insert(newEvent)
