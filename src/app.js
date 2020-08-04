@@ -12,8 +12,8 @@ const DatalogsRouter = require('./datalogs-router');
 const app = express();
 
 app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common'));
-// app.use(cors());
-app.use(cors({origin: CLIENT_ORIGIN}));
+app.use(cors());
+//app.use(cors({origin: CLIENT_ORIGIN}));
 
 app.use(helmet());
 
