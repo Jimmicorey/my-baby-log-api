@@ -15,9 +15,6 @@ const db = knex({
 app.set('db', db);
 
 
-//console.log('knex and driver installed correctly');
-
-
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
 });

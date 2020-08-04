@@ -56,8 +56,6 @@ DatalogsRouter
     const {event_category} = req.body;
     let newEvent = {event_category};
 
-    console.log(newEvent);
-
     DatalogsService.insertNewDatalog(
       req.app.get('db'),
       newEvent
@@ -90,8 +88,6 @@ DatalogsRouter
 
     const {event_category} = req.body;
     let newEvent = {event_category};
-  
-    console.log(newEvent);
   
     DatalogsService.insertNewDatalog(
       req.app.get('db'),
@@ -126,9 +122,7 @@ DatalogsRouter
 
     const {event_category} = req.body;
     let newEvent = {event_category};
-  
-    console.log(newEvent);
-  
+    
     DatalogsService.insertNewDatalog(
       req.app.get('db'),
       newEvent
