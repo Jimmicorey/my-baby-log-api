@@ -1,34 +1,32 @@
-# Express Boilerplate!
+# 'My Baby Log' by James "jimmicorey" Coffelt
 
-This is a boilerplate project used for starting new projects!
+## Live Link to 'My Baby Log'
+https://my-baby-log-app.vercel.app/
 
-## Set up
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+API Endpoints:
 
-1. Clone this repository to your local machine 
-    `git clone https://github.com/Jimmicorey/express-boilerplate NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+GET   /api/datalogs/feedbabydata      <- GETS the logs for 'Feed Baby'
+POST  /api/datalogs/feedbabydata      <- POST a new log for 'Feed Baby'
 
-## Scripts
+GET   /api/datalogs/changediaperdata  <- GETS the logs for 'Change Diaper'
+POST  /api/datalogs/changediaperdata  <- POST a new log for 'Change Diaper'
 
-Start the application `npm start`
-
-Start nodemon for the application `npm run dev`
-
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+GET   /api/datalogs/bathtimedata      <- GETS the logs for 'Bath Time'
+POST  /api/datalogs/bathtimedata      <- POST a new log for 'Bath Time'
 
 
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+## Technology Stack
+Front-End: 
+* React 
+* CSS 
+* HTML
 
-**This is your boilerplate**
-*You are free to change the contents of this project however you like! If you want to add or remove the semi-colons, that's your choice, if you want to use 4 spaces for tab indentation instead of 2, go for it!*
-
-*This project is to help you get started with new projects, now you will have some scripts, dependencies, middleware, testing set up and configuration within a flash!*
+Back-End: 
+* Node 
+* Express 
+* PostgreSQL

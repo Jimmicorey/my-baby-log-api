@@ -1,7 +1,5 @@
 /* eslint-disable strict */
 
-//require('dotenv').config();
-
 const knex = require('knex');
 const app = require('./app');
 const { PORT, DATABASE_URL } = require('./config');
