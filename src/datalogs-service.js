@@ -23,7 +23,7 @@ const DatalogsService = {
       .into('my_baby_log_events')
       .returning('*')
       .then(rows => rows[0]);
-  }
+  },
 
 };
 
